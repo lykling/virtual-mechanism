@@ -1,0 +1,33 @@
+[project]
+name = 'virtual-mechanism'
+authors = [
+  { name = "Pride Leong", email = "lykling.lyk@gmail.com" }
+]
+description = "virtual mechanism for mock and test"
+requires-python = ">3.6"
+dynamic = ["dependencies", "version", "readme"]
+
+[project.scripts]
+virtual-mechanism = "virtual_mechanism.__main__:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+version = {attr = "virtual_mechanism.VERSION"}
+readme = {file = "README.md"}
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.setuptools.package-dir]
+virtual_mechanism = "virtual_mechanism"
+
+[project.urls]
+"Homepage" = "https://github.com/lykling/virtual-mechanism/tree/main"
+"Bug Tracker" = "https://github.com/lykling/virtual-mechanism/issues"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
