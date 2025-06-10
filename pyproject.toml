@@ -24,6 +24,9 @@ find = {}
 [tool.setuptools.package-dir]
 virtual_mechanism = "virtual_mechanism"
 
+[tool.setuptools.package-data]
+virtual_mechanism = ["dbc/*.dbc"]
+
 [project.urls]
 "Homepage" = "https://github.com/lykling/virtual-mechanism/tree/main"
 "Bug Tracker" = "https://github.com/lykling/virtual-mechanism/issues"

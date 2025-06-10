@@ -17,10 +17,7 @@ def main(ctx, **kwargs):
 
 
 @main.command()
-@click.option('--dbc_file',
-              default='./mechanism.dbc',
-              type=str,
-              help='dbc file')
+@click.option('--dbc_file', default='', type=str, help='dbc file')
 @click.option('--device', default='can0', type=str, help='can device')
 @click.pass_context
 def run(ctx, **kwargs):
@@ -29,9 +26,11 @@ def run(ctx, **kwargs):
     dbc_file = kwargs.get('dbc_file', './mechanism.dbc')
     device = kwargs.get('device', 'can0')
 
-    if not os.path.exists(dbc_file):
+    if dbc_file and not os.path.exists(dbc_file):
         raise FileNotFoundError(f"DBC file '{dbc_file}' does not exist.")
 
+    # TODO(All): select mechanism type by command line arguments
+    # TODO(All): support multiple mechanisms and plugins
     mech = simple_clamp.SimpleClamp(dbc_file=dbc_file, device=device)
     mech.run()
 

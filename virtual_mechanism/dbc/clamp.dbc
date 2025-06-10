@@ -1,0 +1,97 @@
+VERSION "created by canmatrix"
+
+
+NS_ :
+
+BS_:
+
+BU_: CCU ADAS CLAMP BCM Joystick EPB BMS 
+
+
+BO_ 49 ADAS_Clamping_Position_Command: 8 ADAS
+ SG_ Clamping_Position_CTRL : 0|1@1+ (1,0) [0|1] "" CLAMP
+ SG_ Clamping_Descent_CTRL : 1|1@1+ (1,0) [0|1] "" CLAMP
+ SG_ Clamping_Extend_CTRL : 2|1@1+ (1,0) [0|1] "" CLAMP
+ SG_ Clamping_Position_Front_Target : 8|16@1+ (0.1,0) [0|6553.5] "mm" CLAMP
+ SG_ Clamping_Position_Rear_Target : 24|16@1+ (0.1,0) [0|6553.5] "mm" CLAMP
+ SG_ Clamping_DescentHeight_Target : 40|16@1+ (0.1,0) [0|6553.5] "mm" CLAMP
+
+BO_ 50 ADAS_Clamping_Operation_Command: 8 ADAS
+ SG_ Clamping_ExtLength_FL_Target : 0|16@1+ (0.1,0) [0|6553.5] "mm" CLAMP
+ SG_ Clamping_ExtLength_FR_Target : 16|16@1+ (0.1,0) [0|6553.5] "mm" CLAMP
+ SG_ Clamping_ExtLength_RL_Target : 32|16@1+ (0.1,0) [0|6553.5] "mm" CLAMP
+ SG_ Clamping_ExtLength_RR_Target : 48|16@1+ (0.1,0) [0|6553.5] "mm" CLAMP
+
+BO_ 186 CLAMP_Clamping_Position_Report: 8 CLAMP
+ SG_ Clamping_Position_STATE : 0|1@1+ (1,0) [0|1] "" ADAS
+ SG_ Clamping_Descent_STATE : 1|1@1+ (1,0) [0|1] "" ADAS
+ SG_ Clamping_Extend_STATE : 2|1@1+ (1,0) [0|1] "" ADAS
+ SG_ Clamping_Fixed_Front : 3|1@1+ (1,0) [0|1] "" ADAS
+ SG_ Clamping_Fixed_Rear : 4|1@1+ (1,0) [0|1] "" ADAS
+ SG_ Clamping_Load_STATE : 5|1@1+ (1,0) [0|1] "" ADAS
+ SG_ Clamping_Position_Front : 8|16@1+ (0.1,0) [0|6553.5] "mm" ADAS
+ SG_ Clamping_Position_Rear : 24|16@1+ (0.1,0) [0|6553.5] "mm" ADAS
+ SG_ Clamping_DescentHeight : 40|16@1+ (0.1,0) [0|6553.5] "mm" ADAS
+ SG_ Clamping_ErrorCode : 56|8@1+ (1,0) [0|255] "" ADAS
+
+BO_ 187 CLAMP_Clamping_Operation_Report: 8 CLAMP
+ SG_ Clamping_ExtLength_FL : 0|16@1+ (0.1,0) [0|6553.5] "mm" ADAS
+ SG_ Clamping_ExtLength_FR : 16|16@1+ (0.1,0) [0|6553.5] "mm" ADAS
+ SG_ Clamping_ExtLength_RL : 32|16@1+ (0.1,0) [0|6553.5] "mm" ADAS
+ SG_ Clamping_ExtLength_RR : 48|16@1+ (0.1,0) [0|6553.5] "mm" ADAS
+
+
+
+CM_ SG_ 49 Clamping_Position_CTRL "Position control flag of clamping mechanism";
+CM_ SG_ 49 Clamping_Descent_CTRL "Descent control flag of clamping mechanism";
+CM_ SG_ 49 Clamping_Extend_CTRL "Extend control flag of clamping mechanism";
+CM_ SG_ 49 Clamping_Position_Front_Target "Front Clamping mechanism position";
+CM_ SG_ 49 Clamping_Position_Rear_Target "Rear Clamping mechanism position";
+CM_ SG_ 49 Clamping_DescentHeight_Target "Lowering height of the clamping mechanism";
+CM_ SG_ 50 Clamping_ExtLength_FL_Target "Front-Left clamping mechanism extension length";
+CM_ SG_ 50 Clamping_ExtLength_FR_Target "Front-Right clamping mechanism extension length";
+CM_ SG_ 50 Clamping_ExtLength_RL_Target "Rear-Left clamping mechanism extension length";
+CM_ SG_ 50 Clamping_ExtLength_RR_Target "Rear-Right clamping mechanism extension length";
+CM_ SG_ 186 Clamping_Position_STATE "Position control state of clamping mechanism";
+CM_ SG_ 186 Clamping_Descent_STATE "Descent control state of clamping mechanism";
+CM_ SG_ 186 Clamping_Extend_STATE "Extend control state of clamping mechanism";
+CM_ SG_ 186 Clamping_Fixed_Front "Front Clamping mechanism fixed state";
+CM_ SG_ 186 Clamping_Fixed_Rear "Rear Clamping mechanism fixed state";
+CM_ SG_ 186 Clamping_Load_STATE "Load state of the Clamping mechanism";
+CM_ SG_ 186 Clamping_Position_Front "Front Clamping mechanism position";
+CM_ SG_ 186 Clamping_Position_Rear "Rear Clamping mechanism position";
+CM_ SG_ 186 Clamping_DescentHeight "Lowering height of the clamping mechanism";
+CM_ SG_ 186 Clamping_ErrorCode "Error code of the Clamping mechanism";
+CM_ SG_ 187 Clamping_ExtLength_FL "Front-Left clamping mechanism extension length";
+CM_ SG_ 187 Clamping_ExtLength_FR "Front-Right clamping mechanism extension length";
+CM_ SG_ 187 Clamping_ExtLength_RL "Rear-Left clamping mechanism extension length";
+CM_ SG_ 187 Clamping_ExtLength_RR "Rear-Right clamping mechanism extension length";
+
+
+BA_DEF_ BO_ "GenMsgCycleTime" INT 0 65535;
+BA_DEF_ BO_ "GenMsgCycleTimeActive" INT 0 65535;
+BA_DEF_ BO_ "GenMsgDelayTime" INT 0 65535;
+BA_DEF_ BO_ "GenMsgNrOfRepetitions" INT 0 65535;
+BA_DEF_ BO_ "GenMsgSendType" ENUM "Cycle";
+BA_DEF_ SG_ "GenSigSNA" STRING;
+
+
+BA_ "GenMsgCycleTime" BO_ 49 20;
+BA_ "GenMsgSendType" BO_ 49 0;
+BA_ "GenMsgCycleTime" BO_ 50 20;
+BA_ "GenMsgSendType" BO_ 50 0;
+BA_ "GenMsgCycleTime" BO_ 186 20;
+BA_ "GenMsgSendType" BO_ 186 0;
+BA_ "GenMsgCycleTime" BO_ 187 20;
+BA_ "GenMsgSendType" BO_ 187 0;
+
+
+VAL_ 49 Clamping_Position_CTRL 0 "Disable" 1 "Enable";
+VAL_ 49 Clamping_Descent_CTRL 0 "Disable" 1 "Enable";
+VAL_ 49 Clamping_Extend_CTRL 0 "Disable" 1 "Enable";
+VAL_ 186 Clamping_Position_STATE 0 "Disable" 1 "Enable";
+VAL_ 186 Clamping_Descent_STATE 0 "Disable" 1 "Enable";
+VAL_ 186 Clamping_Extend_STATE 0 "Disable" 1 "Enable";
+VAL_ 186 Clamping_Fixed_Front 0 "Unfixed" 1 "Fixed";
+VAL_ 186 Clamping_Fixed_Rear 0 "Unfixed" 1 "Fixed";
+VAL_ 186 Clamping_Load_STATE 0 "Unloaded" 1 "Loaded";

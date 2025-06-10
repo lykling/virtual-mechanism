@@ -17,28 +17,30 @@
 """Simple Clamp
 """
 import math
+import pathlib
 import time
 import types
+from importlib import resources as impresources
 import can
 import cantools
 import cantools.database
 from virtual_mechanism.mechanisms import mechanism
+from virtual_mechanism import dbc
 
 
 class SimpleClamp(mechanism.Mechanism):
     """SimpleClamp
     """
 
-    def __init__(self,
-                 dbc_file: str = './mechanism.dbc',
-                 device: str = 'can0',
-                 state=None):
+    def __init__(self, dbc_file: str = '', device: str = 'can0', state=None):
         """__init__
         """
 
         self.dbc_file = dbc_file
+        if not dbc_file:
+            self.dbc_file = impresources.files(dbc).joinpath('clamp.dbc')
+        self.db = self.dbc_file
         self.device = device
-        self.db = dbc_file
         if not isinstance(self.db, cantools.database.Database):
             raise TypeError(
                 f"Expected cantools.database.Database, got {type(self.db)}")
@@ -112,7 +114,7 @@ class SimpleClamp(mechanism.Mechanism):
     def db(self, value):
         """db
         """
-        if isinstance(value, str):
+        if isinstance(value, (str, pathlib.PosixPath)):
             result = cantools.database.load_file(value)
             if not isinstance(result, cantools.database.Database):
                 raise TypeError(
