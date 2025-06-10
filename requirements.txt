@@ -1,2 +1,4 @@
+cantools
 click
+python-can
 setuptools
