@@ -1,4 +1,5 @@
 cantools
 click
 python-can
+pyyaml
 setuptools
